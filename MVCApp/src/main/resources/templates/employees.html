@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Management System</title>
+<link rel="stylesheet" 
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" 
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	 crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container mt-4">
+	<div class="text-center">
+		<h2>Welcome to Employee Management System</h2>
+	</div>
+	<br>
+	<div class="co-lg-3">
+	<a th:href="@{/employees/new}" class="btn btn-primary bt-sm mb-3">Add Employee</a>
+	 </div>
+	<br>
+	<div class="text-left">
+		<h3 class="text-primary">List of Employees</h3>
+	</div>
+	<div class="table-responsive">
+		<table class="table table-bordered">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Employee Id</th>
+					<th scope="col">Employee Name</th>
+					<th scope="col">Employee Department</th>
+					<th scope="col">Employee Email</th>
+					<th scope="col">Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="employee : ${employees}">
+					<td th:text="${employee.empId}"></td>
+					<td th:text="${employee.empName}"></td>
+					<td th:text="${employee.empDept}"></td>
+					<td th:text="${employee.empEmail}"></td>
+					<td>
+					<a th:href="@{/employees/edit/{id} (id=${employee.empId})}" 
+					  class="btn btn-primary">Update</a>
+					  
+					<a th:href="@{/employees/delete/{id} (id=${employee.empId})}" 
+					  class="btn btn-danger">Delete</a> 
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+</body>
+</html>
